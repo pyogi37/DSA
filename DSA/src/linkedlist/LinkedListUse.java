@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.Scanner;
+
 public class LinkedListUse {
 
 	public static Node<Integer> createLinkedList() {
@@ -27,10 +29,36 @@ public class LinkedListUse {
 
 	}
 
+	public static Node<Integer> takeInput() {
+
+		Scanner s = new Scanner(System.in);
+		int data = s.nextInt();
+
+		Node<Integer> head = null;
+		Node<Integer> tail = null;
+
+		while (data != -1) {
+			Node<Integer> currNode = new Node<Integer>(data);
+			if (head == null) {
+				head = currNode;
+				tail = currNode;
+			} else {
+				tail.next = currNode;
+				tail = tail.next;
+			}
+			
+			data = s.nextInt();
+		}
+		s.close();
+		return head;
+
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Node<Integer> n = createLinkedList();
+//		Node<Integer> n = createLinkedList();
+		Node<Integer> n = takeInput();
 		printLinkedList(n);
 
 	}
